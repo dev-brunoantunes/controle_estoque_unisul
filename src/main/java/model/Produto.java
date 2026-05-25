@@ -6,7 +6,7 @@ public class Produto extends Entidade implements Reajustavel {
 
     private String nome;
     private double preco;
-    private String unidade;
+    private Unidade unidade;
 
     private int quantidade;
     private int quantidadeMinima;
@@ -18,7 +18,7 @@ public class Produto extends Entidade implements Reajustavel {
     }
 
     public Produto(int id, String nome, double preco,
-                   String unidade, int quantidade,
+                   Unidade unidade, int quantidade,
                    int quantidadeMinima,
                    int quantidadeMaxima,
                    Categoria categoria) {
@@ -50,11 +50,11 @@ public class Produto extends Entidade implements Reajustavel {
         this.preco = preco;
     }
 
-    public String getUnidade() {
+    public Unidade getUnidade() {
         return unidade;
     }
 
-    public void setUnidade(String unidade) {
+    public void setUnidade(Unidade unidade) {
         this.unidade = unidade;
     }
 

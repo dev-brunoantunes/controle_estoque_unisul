@@ -8,6 +8,9 @@ import java.util.List;
 
 import model.Categoria;
 import model.Produto;
+import model.Unidade;
+import model.Tamanho;
+import model.Embalagem;
 import util.Conexao;
 
 public class ProdutoDAO {
@@ -26,7 +29,9 @@ public class ProdutoDAO {
 
             ps.setString(1, produto.getNome());
             ps.setDouble(2, produto.getPreco());
-            ps.setString(3, produto.getUnidade());
+
+            ps.setString(3, produto.getUnidade().name());
+
             ps.setInt(4, produto.getQuantidade());
             ps.setInt(5, produto.getQuantidadeMinima());
             ps.setInt(6, produto.getQuantidadeMaxima());
@@ -61,19 +66,36 @@ public class ProdutoDAO {
             while (rs.next()) {
 
                 Categoria categoria = new Categoria();
+
                 categoria.setId(rs.getInt("cat_id"));
                 categoria.setNome(rs.getString("cat_nome"));
-                categoria.setTamanho(rs.getString("tamanho"));
-                categoria.setEmbalagem(rs.getString("embalagem"));
+
+                categoria.setTamanho(
+                        Tamanho.valueOf(rs.getString("tamanho"))
+                );
+
+                categoria.setEmbalagem(
+                        Embalagem.valueOf(rs.getString("embalagem"))
+                );
 
                 Produto produto = new Produto(
+
                     rs.getInt("id"),
+
                     rs.getString("nome"),
+
                     rs.getDouble("preco"),
-                    rs.getString("unidade"),
+
+                    Unidade.valueOf(
+                            rs.getString("unidade")
+                    ),
+
                     rs.getInt("quantidade"),
+
                     rs.getInt("qtd_min"),
+
                     rs.getInt("qtd_max"),
+
                     categoria
                 );
 
@@ -109,19 +131,36 @@ public class ProdutoDAO {
                 if (rs.next()) {
 
                     Categoria categoria = new Categoria();
+
                     categoria.setId(rs.getInt("cat_id"));
                     categoria.setNome(rs.getString("cat_nome"));
-                    categoria.setTamanho(rs.getString("tamanho"));
-                    categoria.setEmbalagem(rs.getString("embalagem"));
+
+                    categoria.setTamanho(
+                            Tamanho.valueOf(rs.getString("tamanho"))
+                    );
+
+                    categoria.setEmbalagem(
+                            Embalagem.valueOf(rs.getString("embalagem"))
+                    );
 
                     return new Produto(
+
                         rs.getInt("id"),
+
                         rs.getString("nome"),
+
                         rs.getDouble("preco"),
-                        rs.getString("unidade"),
+
+                        Unidade.valueOf(
+                                rs.getString("unidade")
+                        ),
+
                         rs.getInt("quantidade"),
+
                         rs.getInt("qtd_min"),
+
                         rs.getInt("qtd_max"),
+
                         categoria
                     );
                 }
@@ -148,12 +187,19 @@ public class ProdutoDAO {
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setString(1, produto.getNome());
+
             ps.setDouble(2, produto.getPreco());
-            ps.setString(3, produto.getUnidade());
+
+            ps.setString(3, produto.getUnidade().name());
+
             ps.setInt(4, produto.getQuantidade());
+
             ps.setInt(5, produto.getQuantidadeMinima());
+
             ps.setInt(6, produto.getQuantidadeMaxima());
+
             ps.setInt(7, produto.getCategoria().getId());
+
             ps.setInt(8, produto.getId());
 
             ps.executeUpdate();
@@ -173,6 +219,7 @@ public class ProdutoDAO {
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setInt(1, id);
+
             ps.executeUpdate();
 
             System.out.println("Produto removido!");

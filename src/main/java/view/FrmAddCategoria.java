@@ -7,6 +7,8 @@ package view;
 import dao.CategoriaDAO;
 import javax.swing.JOptionPane;
 import model.Categoria;
+import model.Tamanho;
+import model.Embalagem;
 
 public class FrmAddCategoria extends javax.swing.JFrame {
 
@@ -194,8 +196,8 @@ public class FrmAddCategoria extends javax.swing.JFrame {
 
         Categoria categoria = new Categoria();
         categoria.setNome(nomectg.getText().trim());
-        categoria.setTamanho(tmnctg.getText().trim());
-        categoria.setEmbalagem(embcat.getText().trim());
+        categoria.setTamanho(Tamanho.valueOf(tmnctg.getText().trim().toUpperCase()));
+        categoria.setEmbalagem(Embalagem.valueOf(embcat.getText().trim().toUpperCase()));
 
         CategoriaDAO dao = new CategoriaDAO();
         dao.inserir(categoria);

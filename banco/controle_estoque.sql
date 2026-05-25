@@ -9,8 +9,8 @@ USE controle_estoque;
 CREATE TABLE `categoria` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) NOT NULL,
-  `tamanho` varchar(20) DEFAULT NULL,
-  `embalagem` varchar(20) DEFAULT NULL,
+  `tamanho` ENUM('PEQUENO', 'MEDIO', 'GRANDE') DEFAULT NULL,
+  `embalagem` ENUM('SACO', 'CAIXA', 'GARRAFA', 'PACOTE', 'LATA') DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -22,7 +22,7 @@ CREATE TABLE `produto` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) DEFAULT NULL,
   `preco` decimal(10,2) DEFAULT NULL,
-  `unidade` varchar(20) DEFAULT NULL,
+  `unidade` ENUM('UN', 'KG', 'G', 'L', 'ML') DEFAULT NULL,
   `quantidade` int DEFAULT NULL,
   `qtd_min` int DEFAULT NULL,
   `qtd_max` int DEFAULT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE `movimentacao` (
   `produto_id` int DEFAULT NULL,
   `data_mov` date DEFAULT NULL,
   `quantidade` int DEFAULT NULL,
-  `tipo` varchar(10) DEFAULT NULL,
+  `tipo` ENUM('ENTRADA', 'SAIDA') DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `produto_id` (`produto_id`),
   CONSTRAINT `movimentacao_ibfk_1`
