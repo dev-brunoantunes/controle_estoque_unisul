@@ -3,8 +3,8 @@ package model;
 public class Categoria extends Entidade {
 
     private String nome;
-    private String tamanho;
-    private String embalagem;
+    private Tamanho tamanho;
+    private Embalagem embalagem;
 
     public Categoria() {
     }
@@ -17,19 +17,19 @@ public class Categoria extends Entidade {
         this.nome = nome;
     }
 
-    public String getTamanho() {
+    public Tamanho getTamanho() {
         return tamanho;
     }
 
-    public void setTamanho(String tamanho) {
+    public void setTamanho(Tamanho tamanho) {
         this.tamanho = tamanho;
     }
 
-    public String getEmbalagem() {
+    public Embalagem getEmbalagem() {
         return embalagem;
     }
 
-    public void setEmbalagem(String embalagem) {
+    public void setEmbalagem(Embalagem embalagem) {
         this.embalagem = embalagem;
     }
 

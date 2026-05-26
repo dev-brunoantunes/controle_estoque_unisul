@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Categoria;
+import model.Embalagem;
+import model.Tamanho;
 import util.Conexao;
 
 public class CategoriaDAO {
@@ -19,8 +21,8 @@ public class CategoriaDAO {
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setString(1, categoria.getNome());
-            ps.setString(2, categoria.getTamanho());
-            ps.setString(3, categoria.getEmbalagem());
+            ps.setString(2, categoria.getTamanho().name());
+            ps.setString(3, categoria.getEmbalagem().name());
 
             ps.executeUpdate();
 
@@ -44,10 +46,11 @@ public class CategoriaDAO {
             while (rs.next()) {
 
                 Categoria categoria = new Categoria();
+
                 categoria.setId(rs.getInt("id"));
                 categoria.setNome(rs.getString("nome"));
-                categoria.setTamanho(rs.getString("tamanho"));
-                categoria.setEmbalagem(rs.getString("embalagem"));
+                categoria.setTamanho(Tamanho.valueOf(rs.getString("tamanho")));
+                categoria.setEmbalagem(Embalagem.valueOf(rs.getString("embalagem")));
 
                 lista.add(categoria);
             }
@@ -71,11 +74,14 @@ public class CategoriaDAO {
             try (ResultSet rs = ps.executeQuery()) {
 
                 if (rs.next()) {
+
                     Categoria categoria = new Categoria();
+
                     categoria.setId(rs.getInt("id"));
                     categoria.setNome(rs.getString("nome"));
-                    categoria.setTamanho(rs.getString("tamanho"));
-                    categoria.setEmbalagem(rs.getString("embalagem"));
+                    categoria.setTamanho(Tamanho.valueOf(rs.getString("tamanho")));
+                    categoria.setEmbalagem(Embalagem.valueOf(rs.getString("embalagem")));
+
                     return categoria;
                 }
             }
@@ -95,8 +101,8 @@ public class CategoriaDAO {
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setString(1, categoria.getNome());
-            ps.setString(2, categoria.getTamanho());
-            ps.setString(3, categoria.getEmbalagem());
+            ps.setString(2, categoria.getTamanho().name());
+            ps.setString(3, categoria.getEmbalagem().name());
             ps.setInt(4, categoria.getId());
 
             ps.executeUpdate();
@@ -116,6 +122,7 @@ public class CategoriaDAO {
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setInt(1, id);
+
             ps.executeUpdate();
 
             System.out.println("Categoria removida!");

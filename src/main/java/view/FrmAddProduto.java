@@ -10,6 +10,7 @@ import model.Categoria;
 import model.Produto;
 import dao.CategoriaDAO;
 import java.util.List;
+import model.Unidade;
 
 /**
  *
@@ -273,7 +274,11 @@ public class FrmAddProduto extends javax.swing.JFrame {
 
             produto.setNome(nomeprd.getText().trim());
             produto.setPreco(Double.parseDouble(precoprd.getText().trim()));
-            produto.setUnidade(undprd.getText().trim());
+            produto.setUnidade(
+                    Unidade.valueOf(
+                            undprd.getText().trim().toUpperCase()
+                    )
+            );
             produto.setQuantidade(Integer.parseInt(estoqueprd.getText().trim()));
             produto.setQuantidadeMinima(Integer.parseInt(minprd.getText().trim()));
             produto.setQuantidadeMaxima(Integer.parseInt(maxprd.getText().trim()));
@@ -294,10 +299,12 @@ public class FrmAddProduto extends javax.swing.JFrame {
             maxprd.setText("");
             jCategoriaSelect.setSelectedIndex(0);
 
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Verifique os campos numéricos (Preço, Quantidade, Mínimo, Máximo).");
-        }
+        } catch (IllegalArgumentException e) {
 
+            JOptionPane.showMessageDialog(this,
+                    "Unidade inválida! Use: UN, KG, G, L ou ML");
+
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
