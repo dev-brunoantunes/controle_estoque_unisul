@@ -9,7 +9,7 @@ package view;
  * @author sdews
  */
 public class FrmMain extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmMain.class.getName());
 
     /**
@@ -32,12 +32,8 @@ public class FrmMain extends javax.swing.JFrame {
         jMenuBar = new javax.swing.JMenuBar();
         jMenuMovimentacao = new javax.swing.JMenu();
         jMenuOpcoes = new javax.swing.JMenu();
-        jMenuItemCategoria = new javax.swing.JMenu();
-        jMenuItemCategoriaAdd = new javax.swing.JMenuItem();
-        jMenuItemCategoriaAlterar = new javax.swing.JMenuItem();
-        jMenuItemProduto = new javax.swing.JMenu();
-        jMenuItemProdutoAdd = new javax.swing.JMenuItem();
-        jMenuItemProdutoAlterar = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -49,29 +45,13 @@ public class FrmMain extends javax.swing.JFrame {
 
         jMenuOpcoes.setText("Opções");
 
-        jMenuItemCategoria.setText("Categoria");
+        jMenuItem2.setText("Categoria");
+        jMenuItem2.addActionListener(this::jMenuItem2ActionPerformed);
+        jMenuOpcoes.add(jMenuItem2);
 
-        jMenuItemCategoriaAdd.setText("Adicionar");
-        jMenuItemCategoriaAdd.addActionListener(this::jMenuItemCategoriaAddActionPerformed);
-        jMenuItemCategoria.add(jMenuItemCategoriaAdd);
-
-        jMenuItemCategoriaAlterar.setText("Alterar");
-        jMenuItemCategoriaAlterar.addActionListener(this::jMenuItemCategoriaAlterarActionPerformed);
-        jMenuItemCategoria.add(jMenuItemCategoriaAlterar);
-
-        jMenuOpcoes.add(jMenuItemCategoria);
-
-        jMenuItemProduto.setText("Produto");
-
-        jMenuItemProdutoAdd.setText("Adicionar");
-        jMenuItemProdutoAdd.addActionListener(this::jMenuItemProdutoAddActionPerformed);
-        jMenuItemProduto.add(jMenuItemProdutoAdd);
-
-        jMenuItemProdutoAlterar.setText("Alterar");
-        jMenuItemProdutoAlterar.addActionListener(this::jMenuItemProdutoAlterarActionPerformed);
-        jMenuItemProduto.add(jMenuItemProdutoAlterar);
-
-        jMenuOpcoes.add(jMenuItemProduto);
+        jMenuItem3.setText("Produto");
+        jMenuItem3.addActionListener(this::jMenuItem3ActionPerformed);
+        jMenuOpcoes.add(jMenuItem3);
 
         jMenuBar.add(jMenuOpcoes);
 
@@ -92,29 +72,15 @@ public class FrmMain extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItemProdutoAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutoAddActionPerformed
-        // TODO add your handling code here:
-        FrmAddProduto object = new FrmAddProduto();
-        object.setVisible(true);
-    }//GEN-LAST:event_jMenuItemProdutoAddActionPerformed
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        new FrmCategoria().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jMenuItemProdutoAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutoAlterarActionPerformed
-        // TODO add your handling code here:
-        FrmAltProduto object = new FrmAltProduto();
-        object.setVisible(true);
-    }//GEN-LAST:event_jMenuItemProdutoAlterarActionPerformed
-
-    private void jMenuItemCategoriaAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCategoriaAddActionPerformed
-        // TODO add your handling code here:
-        FrmAddCategoria object = new FrmAddCategoria();
-        object.setVisible (true);
-    }//GEN-LAST:event_jMenuItemCategoriaAddActionPerformed
-
-    private void jMenuItemCategoriaAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCategoriaAlterarActionPerformed
-        // TODO add your handling code here:
-        FrmAltCategoria object = new FrmAltCategoria();
-        object.setVisible (true);
-    }//GEN-LAST:event_jMenuItemCategoriaAlterarActionPerformed
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        new FrmProduto().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -144,12 +110,8 @@ public class FrmMain extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenu jMenuItemCategoria;
-    private javax.swing.JMenuItem jMenuItemCategoriaAdd;
-    private javax.swing.JMenuItem jMenuItemCategoriaAlterar;
-    private javax.swing.JMenu jMenuItemProduto;
-    private javax.swing.JMenuItem jMenuItemProdutoAdd;
-    private javax.swing.JMenuItem jMenuItemProdutoAlterar;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenu jMenuMovimentacao;
     private javax.swing.JMenu jMenuOpcoes;
     // End of variables declaration//GEN-END:variables
