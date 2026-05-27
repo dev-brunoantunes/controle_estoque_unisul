@@ -1,6 +1,6 @@
 package teste;
 
-import util.Conexao;
+import utilitarios.Conexao;
 import java.sql.Connection;
 
 public class teste {

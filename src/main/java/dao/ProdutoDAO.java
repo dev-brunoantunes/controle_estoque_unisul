@@ -6,12 +6,12 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Categoria;
-import model.Produto;
-import model.Unidade;
-import model.Tamanho;
-import model.Embalagem;
-import util.Conexao;
+import modelo.Categoria;
+import modelo.Produto;
+import enums.Unidade;
+import enums.Tamanho;
+import enums.Embalagem;
+import utilitarios.Conexao;
 
 public class ProdutoDAO {
 

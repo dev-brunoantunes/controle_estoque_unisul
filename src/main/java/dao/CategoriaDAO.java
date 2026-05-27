@@ -6,10 +6,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Categoria;
-import model.Embalagem;
-import model.Tamanho;
-import util.Conexao;
+import modelo.Categoria;
+import enums.Embalagem;
+import enums.Tamanho;
+import utilitarios.Conexao;
 
 public class CategoriaDAO {
 

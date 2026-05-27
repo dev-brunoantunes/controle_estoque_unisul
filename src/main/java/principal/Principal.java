@@ -1,6 +1,6 @@
-package main;
+package principal;
 
-import view.FrmMain;
+import visao.FrmMain;
 
 public class Principal {
 

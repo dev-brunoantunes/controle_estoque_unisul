@@ -6,10 +6,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Movimentacao;
-import model.Produto;
-import model.TipoMovimentacao;
-import util.Conexao;
+import modelo.Movimentacao;
+import modelo.Produto;
+import enums.TipoMovimentacao;
+import utilitarios.Conexao;
 
 public class MovimentacaoDAO {
 
@@ -44,7 +44,7 @@ public class MovimentacaoDAO {
         WHERE id = ?
     """;
 
-        try (java.sql.Connection conn = util.Conexao.conectar(); java.sql.PreparedStatement ps = conn.prepareStatement(sql)) {
+        try (java.sql.Connection conn = utilitarios.Conexao.conectar(); java.sql.PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setInt(1, movimentacao.getProduto().getId());
             ps.setDate(2, java.sql.Date.valueOf(movimentacao.getData()));
@@ -64,7 +64,7 @@ public class MovimentacaoDAO {
 
         String sql = "DELETE FROM movimentacao WHERE id = ?";
 
-        try (java.sql.Connection conn = util.Conexao.conectar(); java.sql.PreparedStatement ps = conn.prepareStatement(sql)) {
+        try (java.sql.Connection conn = utilitarios.Conexao.conectar(); java.sql.PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setInt(1, id);
             ps.executeUpdate();

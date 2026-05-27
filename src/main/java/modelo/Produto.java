@@ -1,5 +1,6 @@
-package model;
+package modelo;
 
+import enums.Unidade;
 import interfaces.Reajustavel;
 
 public class Produto extends Entidade implements Reajustavel {

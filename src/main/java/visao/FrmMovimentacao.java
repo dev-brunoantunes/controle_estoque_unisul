@@ -1,4 +1,4 @@
-package view;
+package visao;
 
 public class FrmMovimentacao extends javax.swing.JFrame {
 
@@ -291,14 +291,14 @@ public class FrmMovimentacao extends javax.swing.JFrame {
 
     private void carregarProdutos() {
         jComboBox2.removeAllItems();
-        java.util.List<model.Produto> produtos = produtoDAO.listar();
+        java.util.List<modelo.Produto> produtos = produtoDAO.listar();
         if (produtos.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(this,
                     "Nenhum produto cadastrado.", "Aviso",
                     javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         }
-        for (model.Produto p : produtos) {
+        for (modelo.Produto p : produtos) {
             jComboBox2.addItem(p.getNome() + " (ID:" + p.getId() + ")");
         }
     }
@@ -307,8 +307,8 @@ public class FrmMovimentacao extends javax.swing.JFrame {
         javax.swing.table.DefaultTableModel model
                 = (javax.swing.table.DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
-        java.util.List<model.Movimentacao> lista = movimentacaoDAO.listar();
-        for (model.Movimentacao m : lista) {
+        java.util.List<modelo.Movimentacao> lista = movimentacaoDAO.listar();
+        for (modelo.Movimentacao m : lista) {
             model.addRow(new Object[]{
                 m.getId(),
                 m.getProduto().getNome(),
@@ -319,17 +319,17 @@ public class FrmMovimentacao extends javax.swing.JFrame {
         }
     }
 
-    private model.Produto getProdutoSelecionado() {
+    private modelo.Produto getProdutoSelecionado() {
         int idx = jComboBox2.getSelectedIndex();
         if (idx < 0) {
             return null;
         }
-        java.util.List<model.Produto> produtos = produtoDAO.listar();
+        java.util.List<modelo.Produto> produtos = produtoDAO.listar();
         return produtos.get(idx);
     }
 
     private void registrarMovimentacao() {
-        model.Produto produto = getProdutoSelecionado();
+        modelo.Produto produto = getProdutoSelecionado();
         if (produto == null) {
             javax.swing.JOptionPane.showMessageDialog(this,
                     "Selecione um produto.", "Atenção",
@@ -347,16 +347,16 @@ public class FrmMovimentacao extends javax.swing.JFrame {
             return;
         }
 
-        model.Produto prodAtual = produtoDAO.buscarPorId(produto.getId());
+        modelo.Produto prodAtual = produtoDAO.buscarPorId(produto.getId());
 
         if (idMovimentacaoSelecionada >= 0) {
             // MODO EDIÇÃO — atualiza o registro existente
-            model.Movimentacao mov = new model.Movimentacao();
+            modelo.Movimentacao mov = new modelo.Movimentacao();
             mov.setId(idMovimentacaoSelecionada);
             mov.setProduto(prodAtual);
             mov.setData(java.time.LocalDate.now());
             mov.setQuantidade(quantidade);
-            mov.setTipo(model.TipoMovimentacao.valueOf(tipo));
+            mov.setTipo(enums.TipoMovimentacao.valueOf(tipo));
             movimentacaoDAO.atualizar(mov);
 
             javax.swing.JOptionPane.showMessageDialog(this,
@@ -402,11 +402,11 @@ public class FrmMovimentacao extends javax.swing.JFrame {
 
             produtoDAO.atualizar(prodAtual);
 
-            model.Movimentacao mov = new model.Movimentacao();
+            modelo.Movimentacao mov = new modelo.Movimentacao();
             mov.setProduto(prodAtual);
             mov.setData(java.time.LocalDate.now());
             mov.setQuantidade(quantidade);
-            mov.setTipo(model.TipoMovimentacao.valueOf(tipo));
+            mov.setTipo(enums.TipoMovimentacao.valueOf(tipo));
             movimentacaoDAO.inserir(mov);
 
             javax.swing.JOptionPane.showMessageDialog(this,
@@ -424,9 +424,9 @@ public class FrmMovimentacao extends javax.swing.JFrame {
     }
 
     private void verificarEstoqueMinimo() {
-        java.util.List<model.Produto> produtos = produtoDAO.listar();
+        java.util.List<modelo.Produto> produtos = produtoDAO.listar();
         StringBuilder alertas = new StringBuilder();
-        for (model.Produto p : produtos) {
+        for (modelo.Produto p : produtos) {
             if (p.abaixoMinimo()) {
                 alertas.append("ALERTA: ")
                         .append(p.getNome())

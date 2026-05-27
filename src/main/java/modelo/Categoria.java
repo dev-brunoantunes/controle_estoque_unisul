@@ -1,4 +1,7 @@
-package model;
+package modelo;
+
+import enums.Tamanho;
+import enums.Embalagem;
 
 public class Categoria extends Entidade {
 

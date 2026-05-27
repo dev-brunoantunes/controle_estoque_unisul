@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package view;
+package visao;
 
 import dao.CategoriaDAO;
 import dao.ProdutoDAO;
-import model.Categoria;
-import model.Produto;
-import model.Unidade;
+import modelo.Categoria;
+import modelo.Produto;
+import enums.Unidade;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -369,7 +369,7 @@ public class FrmProduto extends javax.swing.JFrame {
 
     private void carregarCategorias() {
         cmbCategoria.removeAllItems();
-        for (model.Categoria c : new dao.CategoriaDAO().listar()) {
+        for (modelo.Categoria c : new dao.CategoriaDAO().listar()) {
             cmbCategoria.addItem(c);
         }
     }
@@ -378,7 +378,7 @@ public class FrmProduto extends javax.swing.JFrame {
         javax.swing.table.DefaultTableModel modelo
                 = (javax.swing.table.DefaultTableModel) TblProdutos.getModel();
         modelo.setRowCount(0);
-        for (model.Produto p : new dao.ProdutoDAO().listar()) {
+        for (modelo.Produto p : new dao.ProdutoDAO().listar()) {
             modelo.addRow(new Object[]{
                 p.getId(), p.getNome(),
                 String.format("%.2f", p.getPreco()),

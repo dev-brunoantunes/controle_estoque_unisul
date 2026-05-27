@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package view;
+package visao;
 
 import dao.CategoriaDAO;
 import javax.swing.JOptionPane;
-import model.Categoria;
-import model.Embalagem;
-import model.Tamanho;
+import modelo.Categoria;
+import enums.Embalagem;
+import enums.Tamanho;
 
 /**
  *
