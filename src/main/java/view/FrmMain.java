@@ -29,18 +29,37 @@ public class FrmMain extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
         jMenuBar = new javax.swing.JMenuBar();
         jMenuMovimentacao = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMenuOpcoes = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
+        jMenuItem5.setText("jMenuItem5");
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Controle de estoque");
 
         jMenuMovimentacao.setText("Movimentação");
+        jMenuMovimentacao.addActionListener(this::jMenuMovimentacaoActionPerformed);
+
+        jMenuItem4.setText("Gerenciar");
+        jMenuItem4.addActionListener(this::jMenuItem4ActionPerformed);
+        jMenuMovimentacao.add(jMenuItem4);
+
         jMenuBar.add(jMenuMovimentacao);
 
         jMenuOpcoes.setText("Opções");
@@ -82,6 +101,16 @@ public class FrmMain extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void jMenuMovimentacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuMovimentacaoActionPerformed
+       new FrmMovimentacao().setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_jMenuMovimentacaoActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        new FrmMovimentacao().setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -108,10 +137,15 @@ public class FrmMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenu jMenuMovimentacao;
     private javax.swing.JMenu jMenuOpcoes;
     // End of variables declaration//GEN-END:variables

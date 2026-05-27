@@ -67,6 +67,7 @@ public class FrmProduto extends javax.swing.JFrame {
         cmbCategoria = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -97,7 +98,7 @@ public class FrmProduto extends javax.swing.JFrame {
         bntAdicionar5.setText("Adicionar");
         bntAdicionar5.addActionListener(this::bntAdicionar5bntAdicionarActionPerformed);
 
-        btnEditar5.setBackground(new java.awt.Color(52, 152, 219));
+        btnEditar5.setBackground(new java.awt.Color(0, 153, 204));
         btnEditar5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnEditar5.setText("Editar");
         btnEditar5.addActionListener(this::btnEditar5btnEditarActionPerformed);
@@ -201,11 +202,16 @@ public class FrmProduto extends javax.swing.JFrame {
         );
 
         jMenu1.setText("Movimentação");
+
+        jMenuItem3.setText("Gerenciar");
+        jMenuItem3.addActionListener(this::jMenuItem3ActionPerformed);
+        jMenu1.add(jMenuItem3);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Opções");
 
-        jMenuItem1.setText("Voltar");
+        jMenuItem1.setText("Início");
         jMenuItem1.addActionListener(this::jMenuItem1ActionPerformed);
         jMenu2.add(jMenuItem1);
 
@@ -331,6 +337,11 @@ public class FrmProduto extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        new FrmMovimentacao().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -415,63 +426,30 @@ public class FrmProduto extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TblProdutos;
     private javax.swing.JButton bntAdicionar5;
-    private javax.swing.JButton bntAdicionar6;
-    private javax.swing.JButton bntAdicionar7;
     private javax.swing.JButton btnEditar5;
-    private javax.swing.JButton btnEditar6;
-    private javax.swing.JButton btnEditar7;
     private javax.swing.JButton btnExcluir5;
-    private javax.swing.JButton btnExcluir6;
-    private javax.swing.JButton btnExcluir7;
     private javax.swing.JTextField campPreco;
-    private javax.swing.JTextField campPreco1;
-    private javax.swing.JTextField campPreco2;
     private javax.swing.JTextField campQtdMaxima;
-    private javax.swing.JTextField campQtdMaxima1;
-    private javax.swing.JTextField campQtdMaxima2;
     private javax.swing.JTextField campQtdMinima;
-    private javax.swing.JTextField campQtdMinima1;
-    private javax.swing.JTextField campQtdMinima2;
     private javax.swing.JTextField campQuantidade;
-    private javax.swing.JTextField campQuantidade1;
-    private javax.swing.JTextField campQuantidade2;
     private javax.swing.JComboBox<Categoria> cmbCategoria;
     private javax.swing.JComboBox<String> cmbUnidade;
-    private javax.swing.JComboBox<String> cmbUnidade1;
-    private javax.swing.JComboBox<String> cmbUnidade2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblEmbalagem10;
     private javax.swing.JLabel lblEmbalagem5;
     private javax.swing.JLabel lblEmbalagem6;
-    private javax.swing.JLabel lblEmbalagem7;
-    private javax.swing.JLabel lblEmbalagem8;
-    private javax.swing.JLabel lblEmbalagem9;
     private javax.swing.JTextField lblNome;
-    private javax.swing.JTextField lblNome1;
-    private javax.swing.JTextField lblNome2;
     private javax.swing.JLabel lblProduto;
     private javax.swing.JLabel txtNome10;
-    private javax.swing.JLabel txtNome11;
-    private javax.swing.JLabel txtNome12;
     private javax.swing.JLabel txtNome13;
     private javax.swing.JLabel txtNome14;
     private javax.swing.JLabel txtNome15;
-    private javax.swing.JLabel txtNome16;
-    private javax.swing.JLabel txtNome17;
-    private javax.swing.JLabel txtNome18;
-    private javax.swing.JLabel txtNome19;
-    private javax.swing.JLabel txtNome20;
-    private javax.swing.JLabel txtNome21;
-    private javax.swing.JLabel txtNome22;
-    private javax.swing.JLabel txtNome23;
     private javax.swing.JLabel txtNome24;
     // End of variables declaration//GEN-END:variables
 }

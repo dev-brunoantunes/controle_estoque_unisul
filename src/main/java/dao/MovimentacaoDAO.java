@@ -20,8 +20,7 @@ public class MovimentacaoDAO {
             VALUES (?, ?, ?, ?)
         """;
 
-        try (Connection conn = Conexao.conectar();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+        try (Connection conn = Conexao.conectar(); PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setInt(1, movimentacao.getProduto().getId());
             ps.setDate(2, java.sql.Date.valueOf(movimentacao.getData()));
@@ -31,6 +30,45 @@ public class MovimentacaoDAO {
             ps.executeUpdate();
 
             System.out.println("Movimentação registrada!");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void atualizar(Movimentacao movimentacao) {
+
+        String sql = """
+        UPDATE movimentacao
+        SET produto_id = ?, data_mov = ?, quantidade = ?, tipo = ?
+        WHERE id = ?
+    """;
+
+        try (java.sql.Connection conn = util.Conexao.conectar(); java.sql.PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, movimentacao.getProduto().getId());
+            ps.setDate(2, java.sql.Date.valueOf(movimentacao.getData()));
+            ps.setInt(3, movimentacao.getQuantidade());
+            ps.setString(4, movimentacao.getTipo().name());
+            ps.setInt(5, movimentacao.getId());
+
+            ps.executeUpdate();
+            System.out.println("Movimentação atualizada!");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void remover(int id) {
+
+        String sql = "DELETE FROM movimentacao WHERE id = ?";
+
+        try (java.sql.Connection conn = util.Conexao.conectar(); java.sql.PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            System.out.println("Movimentação removida!");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -49,9 +87,7 @@ public class MovimentacaoDAO {
             ORDER BY m.data_mov DESC
         """;
 
-        try (Connection conn = Conexao.conectar();
-             PreparedStatement ps = conn.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
+        try (Connection conn = Conexao.conectar(); PreparedStatement ps = conn.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
 
