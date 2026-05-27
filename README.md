@@ -47,42 +47,74 @@ Desenvolver um sistema capaz de:
 
 ---
 
-# Funcionalidades do Sistema
+## Requisitos Funcionais
 
-## Cadastro de Produtos
+### RF01
+O sistema deve permitir o cadastro de produtos.
 
-Permite:
+### RF02
+O sistema deve permitir alterar produtos cadastrados.
 
-- Inserir produtos
-- Alterar produtos
-- Consultar produtos
-- Excluir produtos
+### RF03
+O sistema deve permitir excluir produtos.
+
+### RF04
+O sistema deve permitir consultar produtos.
+
+### RF05
+O sistema deve permitir cadastrar categorias.
+
+### RF06
+O sistema deve permitir registrar movimentações de entrada.
+
+### RF07
+O sistema deve permitir registrar movimentações de saída.
+
+### RF08
+O sistema deve atualizar automaticamente o saldo do estoque.
+
+### RF09
+O sistema deve emitir alertas de estoque mínimo e máximo.
+
+### RF10
+O sistema deve gerar relatórios do estoque.
 
 ---
 
-## Cadastro de Categorias
+## Requisitos Não Funcionais
 
-Permite:
+### RNF01
+O sistema deve ser desenvolvido em Java.
 
-- Inserir categorias
-- Alterar categorias
-- Consultar categorias
-- Excluir categorias
+### RNF02
+O sistema deve utilizar Programação Orientada a Objetos.
 
----
+### RNF03
+O sistema deve utilizar banco de dados MySQL.
 
-## Movimentação de Estoque
+### RNF04
+O sistema deve seguir arquitetura MVC.
 
-Permite:
+### RNF05
+O sistema deve funcionar no NetBeans.
 
-- Registrar entrada de produtos
-- Registrar saída de produtos
-- Atualizar quantidade em estoque
-- Controlar saldo do produto
+### RNF06
+O sistema deve possuir interface intuitiva.
 
----
+### RNF07
+O sistema deve permitir fácil manutenção do código.
+
+### RNF08
+O sistema deve utilizar Git e GitHub para versionamento.
+
+### RNF09
+O sistema deve possuir organização modular em pacotes.
+
+### RNF10
+O sistema deve executar corretamente com JDK 25.
 
 # Relatórios do Sistema
+
 
 ## Lista de Preços
 
