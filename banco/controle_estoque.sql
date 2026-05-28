@@ -5,7 +5,6 @@ USE controle_estoque;
 -- =========================
 -- TABELA CATEGORIA
 -- =========================
-
 CREATE TABLE `categoria` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) NOT NULL,
@@ -17,7 +16,6 @@ CREATE TABLE `categoria` (
 -- =========================
 -- TABELA PRODUTO
 -- =========================
-
 CREATE TABLE `produto` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) DEFAULT NULL,
@@ -37,7 +35,6 @@ CREATE TABLE `produto` (
 -- =========================
 -- TABELA MOVIMENTACAO
 -- =========================
-
 CREATE TABLE `movimentacao` (
   `id` int NOT NULL AUTO_INCREMENT,
   `produto_id` int DEFAULT NULL,
@@ -49,6 +46,22 @@ CREATE TABLE `movimentacao` (
   CONSTRAINT `movimentacao_ibfk_1`
     FOREIGN KEY (`produto_id`)
     REFERENCES `produto` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- =========================
+-- TABELA REAJUSTE
+-- =========================
+CREATE TABLE `reajuste` (
+  `id`            INT NOT NULL AUTO_INCREMENT,
+  `data_reajuste` DATE NOT NULL,
+  `valor`         DECIMAL(10,2) NOT NULL,
+  `tipo`          ENUM('PERCENTUAL', 'FIXO') NOT NULL,
+  `categoria_id`  INT DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `categoria_id` (`categoria_id`),
+  CONSTRAINT `reajuste_ibfk_1`
+    FOREIGN KEY (`categoria_id`)
+    REFERENCES `categoria` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 ```
 
