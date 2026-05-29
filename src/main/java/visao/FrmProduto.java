@@ -71,6 +71,7 @@ public class FrmProduto extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Produto");
@@ -88,7 +89,15 @@ public class FrmProduto extends javax.swing.JFrame {
             new String [] {
                 "ID", "NOME", "PREÇO", "QTDE", "QTD.MIN", "QTD.MAX", "UNIDADE", "CATEGORIA"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(TblProdutos);
 
         txtNome10.setText("Nome:");
@@ -219,6 +228,10 @@ public class FrmProduto extends javax.swing.JFrame {
         jMenuItem2.addActionListener(this::jMenuItem2ActionPerformed);
         jMenu2.add(jMenuItem2);
 
+        jMenuItem4.setText("Reajuste/preço");
+        jMenuItem4.addActionListener(this::jMenuItem4ActionPerformed);
+        jMenu2.add(jMenuItem4);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -252,7 +265,7 @@ public class FrmProduto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        new FrmMain().setVisible(true);
+        new FrmPrincipal().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
@@ -341,6 +354,11 @@ public class FrmProduto extends javax.swing.JFrame {
         new FrmMovimentacao().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        new FrmReajustar().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -440,6 +458,7 @@ public class FrmProduto extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblEmbalagem5;

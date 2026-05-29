@@ -19,10 +19,10 @@ public class Produto extends Entidade implements Reajustavel {
     }
 
     public Produto(int id, String nome, double preco,
-                   Unidade unidade, int quantidade,
-                   int quantidadeMinima,
-                   int quantidadeMaxima,
-                   Categoria categoria) {
+            Unidade unidade, int quantidade,
+            int quantidadeMinima,
+            int quantidadeMaxima,
+            Categoria categoria) {
 
         super(id);
 
@@ -92,10 +92,15 @@ public class Produto extends Entidade implements Reajustavel {
     }
 
     @Override
-    public void reajustarPreco(double percentual) {
-
-        preco = preco + (preco * percentual / 100);
-
+    public void reajustarPreco(double percentual, enums.TipoReajuste tipo) {
+        if (tipo == enums.TipoReajuste.AUMENTO) {
+            preco = preco + (preco * percentual / 100);
+        } else {
+            preco = preco - (preco * percentual / 100);
+            if (preco < 0) {
+                preco = 0;
+            }
+        }
     }
 
     // Entrada de estoque
@@ -137,13 +142,13 @@ public class Produto extends Entidade implements Reajustavel {
     @Override
     public String toString() {
 
-        return "Produto{" +
-                "id=" + getId() +
-                ", nome='" + nome + '\'' +
-                ", preco=" + preco +
-                ", quantidade=" + quantidade +
-                ", categoria=" + categoria.getNome() +
-                '}';
+        return "Produto{"
+                + "id=" + getId()
+                + ", nome='" + nome + '\''
+                + ", preco=" + preco
+                + ", quantidade=" + quantidade
+                + ", categoria=" + categoria.getNome()
+                + '}';
 
     }
 

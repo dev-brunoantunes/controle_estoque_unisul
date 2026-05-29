@@ -71,6 +71,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem3ActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reajuste/pre&#xe7;o"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem6ActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
       </SubComponents>
@@ -192,7 +200,7 @@
                       <Component id="lblBaixo" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="lblBaixoNum" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="109" max="32767" attributes="0"/>
+                  <EmptySpace pref="112" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -211,9 +219,6 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="lblBaixo">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="12" style="0"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Estoque Baixo:"/>
           </Properties>
         </Component>
@@ -272,9 +277,6 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="lblValor">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="12" style="0"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Valor em Estoque:"/>
           </Properties>
         </Component>
@@ -333,9 +335,6 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="lblTotal">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="12" style="0"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Total de Produtos:"/>
           </Properties>
         </Component>
@@ -392,9 +391,6 @@
               <SubComponents>
                 <Component class="javax.swing.JTable" name="tblMovimentacoes">
                   <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="12" style="0"/>
-                    </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="4" rowCount="4">
                         <Column editable="true" title="Produto" type="java.lang.Object"/>
@@ -439,11 +435,6 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JScrollPane" name="jScrollPane2">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="12" style="0"/>
-        </Property>
-      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>

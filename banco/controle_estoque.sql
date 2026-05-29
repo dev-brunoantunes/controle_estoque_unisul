@@ -55,7 +55,7 @@ CREATE TABLE `reajuste` (
   `id`            INT NOT NULL AUTO_INCREMENT,
   `data_reajuste` DATE NOT NULL,
   `valor`         DECIMAL(10,2) NOT NULL,
-  `tipo`          ENUM('PERCENTUAL', 'FIXO') NOT NULL,
+  `tipo`          ENUM('AUMENTO', 'DESCONTO') NOT NULL,
   `categoria_id`  INT DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `categoria_id` (`categoria_id`),

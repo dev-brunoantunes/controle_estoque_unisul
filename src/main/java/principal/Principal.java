@@ -1,7 +1,7 @@
 package principal;
 
 import com.formdev.flatlaf.FlatDarkLaf;
-import visao.FrmMain;
+import visao.FrmPrincipal;
 
 public class Principal {
 
@@ -15,7 +15,7 @@ public class Principal {
             e.printStackTrace();
         }
 
-        FrmMain tela = new FrmMain();
+        FrmPrincipal tela = new FrmPrincipal();
 
         tela.setVisible(true);
 

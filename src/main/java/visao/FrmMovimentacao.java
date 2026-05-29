@@ -57,6 +57,7 @@ public class FrmMovimentacao extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
@@ -64,6 +65,7 @@ public class FrmMovimentacao extends javax.swing.JFrame {
         jMenu3.setText("jMenu3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Movimentacao");
 
         lblProduto.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 24)); // NOI18N
         lblProduto.setText("Movimentação");
@@ -135,6 +137,11 @@ public class FrmMovimentacao extends javax.swing.JFrame {
         jMenuItem2.setText("Categoria");
         jMenuItem2.addActionListener(this::jMenuItem2ActionPerformed);
         jMenu2.add(jMenuItem2);
+
+        jMenuItem4.setText("Reajuste/preço");
+        jMenuItem4.setToolTipText("");
+        jMenuItem4.addActionListener(this::jMenuItem4ActionPerformed);
+        jMenu2.add(jMenuItem4);
 
         jMenuBar1.add(jMenu2);
 
@@ -273,19 +280,24 @@ public class FrmMovimentacao extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-         new FrmCategoria().setVisible(true);
+        new FrmCategoria().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        new FrmMain().setVisible(true);
+        new FrmPrincipal().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-           new FrmProduto().setVisible(true);
+        new FrmProduto().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        new FrmReajustar().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void carregarProdutos() {
         jComboBox2.removeAllItems();
@@ -518,6 +530,7 @@ public class FrmMovimentacao extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinner1;

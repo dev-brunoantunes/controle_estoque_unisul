@@ -66,6 +66,7 @@ public class FrmCategoria extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -159,7 +160,15 @@ public class FrmCategoria extends javax.swing.JFrame {
             new String [] {
                 "ID", "NOME", "TAMANHO", "EMBALAGEM"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(TblCategorias);
 
         jMenu2.setText("Movimentação");
@@ -172,13 +181,17 @@ public class FrmCategoria extends javax.swing.JFrame {
 
         jMenu3.setText("Opções");
 
-        jMenuItem1.setText("Voltar");
+        jMenuItem1.setText("Início");
         jMenuItem1.addActionListener(this::jMenuItem1ActionPerformed);
         jMenu3.add(jMenuItem1);
 
         jMenuItem2.setText("Produto");
         jMenuItem2.addActionListener(this::jMenuItem2ActionPerformed);
         jMenu3.add(jMenuItem2);
+
+        jMenuItem4.setText("Reajuste/preço");
+        jMenuItem4.addActionListener(this::jMenuItem4ActionPerformed);
+        jMenu3.add(jMenuItem4);
 
         jMenuBar1.add(jMenu3);
 
@@ -213,7 +226,7 @@ public class FrmCategoria extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        new FrmMain().setVisible(true);
+        new FrmPrincipal().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
@@ -293,9 +306,14 @@ public class FrmCategoria extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-         new FrmMovimentacao().setVisible(true);
-       this.dispose();
+        new FrmMovimentacao().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        new FrmReajustar().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void carregarTabela() {
         javax.swing.table.DefaultTableModel model
@@ -349,6 +367,7 @@ public class FrmCategoria extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblEmbalagem5;

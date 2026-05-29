@@ -1,13 +1,13 @@
 package visao;
 
-public class FrmMain extends javax.swing.JFrame {
+public class FrmPrincipal extends javax.swing.JFrame {
 
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmMain.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmPrincipal.class.getName());
 
     /**
      * Creates new form FrmMain
      */
-    public FrmMain() {
+    public FrmPrincipal() {
         initComponents();
         carregarResumo();
         carregarTabelas();
@@ -49,7 +49,7 @@ public class FrmMain extends javax.swing.JFrame {
         }
         tblMovimentacoes.setModel(modeloMovs);
         tblCriticos.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        
+
     }
 
     private void carregarResumo() {
@@ -108,6 +108,7 @@ public class FrmMain extends javax.swing.JFrame {
         jMenuOpcoes = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -127,7 +128,6 @@ public class FrmMain extends javax.swing.JFrame {
         jPanel1.setMinimumSize(new java.awt.Dimension(200, 30));
         jPanel1.setPreferredSize(new java.awt.Dimension(200, 30));
 
-        lblBaixo.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblBaixo.setText("Estoque Baixo:");
 
         lblBaixoNum.setText("num. est. baixo");
@@ -141,7 +141,7 @@ public class FrmMain extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblBaixo)
                     .addComponent(lblBaixoNum))
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,7 +158,6 @@ public class FrmMain extends javax.swing.JFrame {
         jPanel3.setMinimumSize(new java.awt.Dimension(200, 30));
         jPanel3.setPreferredSize(new java.awt.Dimension(200, 30));
 
-        lblValor.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblValor.setText("Valor em Estoque:");
 
         lblValorNum.setText("valor");
@@ -189,7 +188,6 @@ public class FrmMain extends javax.swing.JFrame {
         jPanel2.setMinimumSize(new java.awt.Dimension(200, 30));
         jPanel2.setPreferredSize(new java.awt.Dimension(200, 30));
 
-        lblTotal.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblTotal.setText("Total de Produtos:");
 
         lblTotalNum.setText("num. prod");
@@ -222,7 +220,6 @@ public class FrmMain extends javax.swing.JFrame {
 
         jLabel3.setText("Últimas Movimentações: ");
 
-        tblMovimentacoes.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         tblMovimentacoes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -258,8 +255,6 @@ public class FrmMain extends javax.swing.JFrame {
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
         );
-
-        jScrollPane2.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
 
         tblCriticos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -298,6 +293,10 @@ public class FrmMain extends javax.swing.JFrame {
         jMenuItem3.setText("Produto");
         jMenuItem3.addActionListener(this::jMenuItem3ActionPerformed);
         jMenuOpcoes.add(jMenuItem3);
+
+        jMenuItem6.setText("Reajuste/preço");
+        jMenuItem6.addActionListener(this::jMenuItem6ActionPerformed);
+        jMenuOpcoes.add(jMenuItem6);
 
         jMenuBar.add(jMenuOpcoes);
 
@@ -378,6 +377,11 @@ public class FrmMain extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        new FrmReajustar().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -400,7 +404,7 @@ public class FrmMain extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FrmMain().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new FrmPrincipal().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -417,6 +421,7 @@ public class FrmMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenu jMenuMovimentacao;
     private javax.swing.JMenu jMenuOpcoes;
     private javax.swing.JPanel jPanel1;
