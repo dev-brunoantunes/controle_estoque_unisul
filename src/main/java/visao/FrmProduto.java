@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package visao;
 
 import dao.CategoriaDAO;
@@ -13,15 +9,21 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
+ * Formulário de gerenciamento de produtos. Permite cadastrar, editar e excluir
+ * produtos, exibindo os registros em uma tabela e navegando para outras telas
+ * pelo menu.
  *
- * @author sdews
+ * @author Luigi
  */
 public class FrmProduto extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmProduto.class.getName());
 
     /**
-     * Creates new form FrmProduto
+     * Construtor da tela de produtos. Inicializa os componentes visuais,
+     * carrega as categorias no combo, carrega a tabela com os dados do banco e
+     * registra o listener de clique na tabela para preencher automaticamente os
+     * campos do formulário.
      */
     public FrmProduto() {
         initComponents();
@@ -263,12 +265,24 @@ public class FrmProduto extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+     * Ação do menu Início. Abre a tela {@link FrmPrincipal} e fecha a tela
+     * atual.
+     *
+     * @param evt evento de clique do item de menu.
+     */
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         new FrmPrincipal().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-
+    /**
+     * Ação do botão Adicionar. Valida os campos, cria um novo {@link Produto}
+     * com os dados informados e o persiste no banco via {@link ProdutoDAO}.
+     * Verifica se a quantidade máxima é maior que a mínima antes de salvar.
+     * Exibe mensagem de sucesso, limpa o formulário e recarrega a tabela.
+     *
+     * @param evt evento de clique do botão.
+     */
     private void bntAdicionar5bntAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntAdicionar5bntAdicionarActionPerformed
         if (lblNome.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Informe o nome do produto!");
@@ -298,7 +312,15 @@ public class FrmProduto extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Verifique os campos numéricos.");
         }
     }//GEN-LAST:event_bntAdicionar5bntAdicionarActionPerformed
-
+    /**
+     * Ação do botão Editar. Valida se uma linha está selecionada e os campos
+     * estão preenchidos corretamente, então atualiza o {@link Produto}
+     * correspondente no banco via {@link ProdutoDAO}. Verifica se a quantidade
+     * máxima é maior que a mínima antes de salvar. Exibe mensagem de sucesso,
+     * limpa o formulário e recarrega a tabela.
+     *
+     * @param evt evento de clique do botão.
+     */
     private void btnEditar5btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar5btnEditarActionPerformed
         int linha = TblProdutos.getSelectedRow();
         if (linha == -1) {
@@ -330,7 +352,14 @@ public class FrmProduto extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Verifique os campos numéricos.");
         }
     }//GEN-LAST:event_btnEditar5btnEditarActionPerformed
-
+    /**
+     * Ação do botão Excluir. Valida se uma linha está selecionada na tabela,
+     * solicita confirmação ao usuário e remove o {@link Produto} correspondente
+     * no banco via {@link ProdutoDAO}. Exibe mensagem de sucesso, limpa o
+     * formulário e recarrega a tabela.
+     *
+     * @param evt evento de clique do botão.
+     */
     private void btnExcluir5btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluir5btnExcluirActionPerformed
         int linha = TblProdutos.getSelectedRow();
         if (linha == -1) {
@@ -356,17 +385,32 @@ public class FrmProduto extends javax.swing.JFrame {
     private void cmbUnidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbUnidadeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbUnidadeActionPerformed
-
+    /**
+     * Ação do menu Categoria. Abre a tela {@link FrmCategoria} e fecha a tela
+     * atual.
+     *
+     * @param evt evento de clique do item de menu.
+     */
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         new FrmCategoria().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
-
+    /**
+     * Ação do menu Movimentação. Abre a tela {@link FrmMovimentacao} e fecha a
+     * tela atual.
+     *
+     * @param evt evento de clique do item de menu.
+     */
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         new FrmMovimentacao().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
-
+    /**
+     * Ação do menu Reajuste/preço. Abre a tela {@link FrmReajustar} e fecha a
+     * tela atual.
+     *
+     * @param evt evento de clique do item de menu.
+     */
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         new FrmReajustar().setVisible(true);
         this.dispose();
@@ -397,6 +441,10 @@ public class FrmProduto extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> new FrmProduto().setVisible(true));
     }
 
+    /**
+     * Carrega todas as categorias cadastradas no banco via {@link CategoriaDAO}
+     * e popula o combo {@code cmbCategoria}, limpando os itens anteriores.
+     */
     private void carregarCategorias() {
         cmbCategoria.removeAllItems();
         for (modelo.Categoria c : new dao.CategoriaDAO().listar()) {
@@ -404,6 +452,12 @@ public class FrmProduto extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Carrega ou recarrega os dados da tabela {@code TblProdutos} buscando
+     * todos os produtos no banco via {@link ProdutoDAO}. Limpa as linhas
+     * existentes antes de popular novamente. O preço é formatado com duas casas
+     * decimais e a categoria exibe apenas o nome.
+     */
     private void carregarTabela() {
         javax.swing.table.DefaultTableModel modelo
                 = (javax.swing.table.DefaultTableModel) TblProdutos.getModel();
@@ -419,6 +473,10 @@ public class FrmProduto extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Limpa todos os campos do formulário, redefinindo os valores padrão dos
+     * campos de texto, combos e removendo a seleção da tabela.
+     */
     private void limparFormulario() {
         lblNome.setText("");
         campPreco.setText("");
@@ -432,6 +490,11 @@ public class FrmProduto extends javax.swing.JFrame {
         TblProdutos.clearSelection();
     }
 
+    /**
+     * Preenche os campos do formulário com os dados da linha selecionada na
+     * tabela {@code TblProdutos}. Seleciona automaticamente a unidade e a
+     * categoria correspondentes nos combos.
+     */
     private void preencherFormulario() {
         int linha = TblProdutos.getSelectedRow();
         if (linha == -1) {

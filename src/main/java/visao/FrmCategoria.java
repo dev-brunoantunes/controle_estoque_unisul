@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package visao;
 
 import dao.CategoriaDAO;
@@ -11,15 +7,20 @@ import constante.Embalagem;
 import constante.Tamanho;
 
 /**
+ * Formulário de gerenciamento de categorias. Permite cadastrar, editar e
+ * excluir categorias, exibindo os registros em uma tabela e navegando para
+ * outras telas pelo menu.
  *
- * @author Usuario
+ * @author Luigi
  */
 public class FrmCategoria extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmCategoria.class.getName());
 
     /**
-     * Creates new form FrmCategoria
+     * Construtor da tela de categorias. Inicializa os componentes visuais,
+     * carrega a tabela com os dados do banco e registra o listener de seleção
+     * de linha da tabela para preencher automaticamente os campos de edição.
      */
     public FrmCategoria() {
         initComponents();
@@ -224,17 +225,33 @@ public class FrmCategoria extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+     * Ação do menu Início. Abre a tela {@link FrmPrincipal} e fecha a tela
+     * atual.
+     *
+     * @param evt evento de clique do item de menu.
+     */
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         new FrmPrincipal().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-
+    /**
+     * Ação do menu Produto. Abre a tela {@link FrmProduto} e fecha a tela
+     * atual.
+     *
+     * @param evt evento de clique do item de menu.
+     */
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         new FrmProduto().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
-
+    /**
+     * Ação do botão Adicionar. Valida o campo nome, cria uma nova
+     * {@link Categoria} com os dados informados e a persiste no banco via
+     * {@link CategoriaDAO}. Exibe mensagem de sucesso e recarrega a tabela.
+     *
+     * @param evt evento de clique do botão.
+     */
     private void bntAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntAdicionarActionPerformed
         String nome = txtNome11.getText().trim();
         if (nome.isEmpty()) {
@@ -255,7 +272,14 @@ public class FrmCategoria extends javax.swing.JFrame {
         jComboBox2.setSelectedIndex(0);
         carregarTabela();
     }//GEN-LAST:event_bntAdicionarActionPerformed
-
+    /**
+     * Ação do botão Editar. Valida se uma linha está selecionada na tabela e se
+     * o campo nome está preenchido, então atualiza a {@link Categoria}
+     * correspondente no banco via {@link CategoriaDAO}. Exibe mensagem de
+     * sucesso e recarrega a tabela.
+     *
+     * @param evt evento de clique do botão.
+     */
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         int row = TblCategorias.getSelectedRow();
         if (row == -1) {
@@ -281,7 +305,14 @@ public class FrmCategoria extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Categoria alterada com sucesso!");
         carregarTabela();
     }//GEN-LAST:event_btnEditarActionPerformed
-
+    /**
+     * Ação do botão Excluir. Valida se uma linha está selecionada na tabela,
+     * solicita confirmação ao usuário e remove a {@link Categoria}
+     * correspondente no banco via {@link CategoriaDAO}. Exibe mensagem de
+     * sucesso e recarrega a tabela.
+     *
+     * @param evt evento de clique do botão.
+     */
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         int row = TblCategorias.getSelectedRow();
         if (row == -1) {
@@ -302,19 +333,34 @@ public class FrmCategoria extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
 
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+    /**
+     * Ação do menu Movimentação. Abre a tela {@link FrmMovimentacao} e fecha a
+     * tela atual.
+     *
+     * @param evt evento de clique do item de menu.
+     */
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         new FrmMovimentacao().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
-
+    /**
+     * Ação do menu Reajuste/preço. Abre a tela {@link FrmReajustar} e fecha a
+     * tela atual.
+     *
+     * @param evt evento de clique do item de menu.
+     */
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         new FrmReajustar().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
-
+    /**
+     * Carrega ou recarrega os dados da tabela {@code TblCategorias} buscando
+     * todos os registros de categorias no banco de dados via
+     * {@link CategoriaDAO}. Limpa as linhas existentes antes de popular
+     * novamente.
+     */
     private void carregarTabela() {
         javax.swing.table.DefaultTableModel model
                 = (javax.swing.table.DefaultTableModel) TblCategorias.getModel();
