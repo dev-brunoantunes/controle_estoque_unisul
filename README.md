@@ -210,8 +210,8 @@ Relatório contendo:
 
 - Kauã Sousa Paulo, RA: 10726111167, github: okauasp ( e commits com a autoria de Kauã )
 - Bruno da Silva Antunes, RA: 1072610215, github: dev-brunoantunes
-- Luigi  Tadeu Tricarico, RA:10726112026, github: LuigiTadeuTricarico
-- Emanueli Schaeffer Gonçalves, RA:1072617519, github: elischaeffer
+- Luigi  Tadeu Tricarico, RA:10726112026, github: LuigiTadeuTricarico ( e commits com a autoria de Usuario )
+  
 
 ---
 
