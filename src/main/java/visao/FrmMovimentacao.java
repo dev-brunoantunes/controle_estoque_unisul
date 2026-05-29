@@ -1,5 +1,11 @@
 package visao;
 
+/**
+ * Tela de gerenciamento de movimentações de estoque. Permite registrar entradas
+ * e saídas de produtos, além de editar e excluir movimentações existentes.
+ *
+ * @author Kauã
+ */
 public class FrmMovimentacao extends javax.swing.JFrame {
 
     private final dao.ProdutoDAO produtoDAO = new dao.ProdutoDAO();
@@ -8,7 +14,9 @@ public class FrmMovimentacao extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmMovimentacao.class.getName());
 
     /**
-     * Creates new form FrmMovimentacao
+     * Construtor da tela de movimentação. Inicializa os componentes, carrega os
+     * produtos e a tabela, verifica o estoque mínimo e configura o listener da
+     * tabela.
      */
     public FrmMovimentacao() {
         initComponents();
@@ -226,12 +234,21 @@ public class FrmMovimentacao extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+     * Ação do botão Aceitar. Registra a movimentação e verifica o estoque
+     * mínimo.
+     *
+     * @param evt evento de clique do botão.
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         registrarMovimentacao();
         verificarEstoqueMinimo();
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    /**
+     * Ação do botão Cancelar. Reseta os campos e volta ao modo de inserção.
+     *
+     * @param evt evento de clique do botão.
+     */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         idMovimentacaoSelecionada = -1;
         jButton1.setText("Ok");
@@ -243,7 +260,12 @@ public class FrmMovimentacao extends javax.swing.JFrame {
         jComboBox2.setSelectedIndex(0);
         jButton4.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
-
+    /**
+     * Ação do botão Excluir. Remove a movimentação selecionada após
+     * confirmação.
+     *
+     * @param evt evento de clique do botão.
+     */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         int linha = jTable1.getSelectedRow();
         if (linha < 0) {
@@ -278,27 +300,46 @@ public class FrmMovimentacao extends javax.swing.JFrame {
                     "Sucesso", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButton4ActionPerformed
-
+    /**
+     * Navega para a tela de categoria.
+     *
+     * @param evt evento de clique do item de menu.
+     */
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         new FrmCategoria().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
-
+    /**
+     * Navega para a tela principal.
+     *
+     * @param evt evento de clique do item de menu.
+     */
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         new FrmPrincipal().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
-
+    /**
+     * Navega para a tela de produto.
+     *
+     * @param evt evento de clique do item de menu.
+     */
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         new FrmProduto().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-
+    /**
+     * Navega para a tela de reajuste de preço.
+     *
+     * @param evt evento de clique do item de menu.
+     */
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         new FrmReajustar().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
-
+    /**
+     * Carrega a lista de produtos no ComboBox de seleção. Exibe aviso caso
+     * nenhum produto esteja cadastrado.
+     */
     private void carregarProdutos() {
         jComboBox2.removeAllItems();
         java.util.List<modelo.Produto> produtos = produtoDAO.listar();
@@ -313,6 +354,9 @@ public class FrmMovimentacao extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Carrega as movimentações cadastradas na tabela.
+     */
     private void carregarTabela() {
         javax.swing.table.DefaultTableModel model
                 = (javax.swing.table.DefaultTableModel) jTable1.getModel();
@@ -329,6 +373,12 @@ public class FrmMovimentacao extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Retorna o produto atualmente selecionado no ComboBox.
+     *
+     * @return o {@link modelo.Produto} selecionado, ou {@code null} se nenhum
+     * estiver selecionado.
+     */
     private modelo.Produto getProdutoSelecionado() {
         int idx = jComboBox2.getSelectedIndex();
         if (idx < 0) {
@@ -338,6 +388,11 @@ public class FrmMovimentacao extends javax.swing.JFrame {
         return produtos.get(idx);
     }
 
+    /**
+     * Registra uma movimentação de entrada ou saída no estoque. No modo edição,
+     * atualiza o registro existente. Valida estoque máximo para entradas e
+     * estoque suficiente para saídas.
+     */
     private void registrarMovimentacao() {
         modelo.Produto produto = getProdutoSelecionado();
         if (produto == null) {
@@ -433,6 +488,10 @@ public class FrmMovimentacao extends javax.swing.JFrame {
         verificarEstoqueMinimo();
     }
 
+    /**
+     * Verifica se algum produto está abaixo do estoque mínimo e exibe alertas
+     * no label da tela.
+     */
     private void verificarEstoqueMinimo() {
         java.util.List<modelo.Produto> produtos = produtoDAO.listar();
         StringBuilder alertas = new StringBuilder();
@@ -453,6 +512,10 @@ public class FrmMovimentacao extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Preenche os campos do formulário com os dados da linha selecionada na
+     * tabela, ativando o modo de edição da movimentação.
+     */
     private void preencherCamposComLinhaSelecionada() {
         int linha = jTable1.getSelectedRow();
         if (linha < 0) {

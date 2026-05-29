@@ -1,11 +1,19 @@
 package visao;
 
+/**
+ * Tela principal do sistema de controle de estoque. Exibe um resumo geral com
+ * total de produtos, estoque baixo, valor em estoque, produtos críticos e
+ * últimas movimentações.
+ *
+ * @author Kauã
+ */
 public class FrmPrincipal extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmPrincipal.class.getName());
 
     /**
-     * Creates new form FrmMain
+     * Construtor da tela principal. Inicializa os componentes, carrega o resumo
+     * e as tabelas.
      */
     public FrmPrincipal() {
         initComponents();
@@ -13,6 +21,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         carregarTabelas();
     }
 
+    /**
+     * Carrega as tabelas de produtos com estoque crítico e das últimas
+     * movimentações registradas.
+     */
     private void carregarTabelas() {
         // Tabela produtos críticos
 
@@ -52,6 +64,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     }
 
+    /**
+     * Carrega o resumo do estoque exibindo total de produtos, quantidade com
+     * estoque baixo e valor total em estoque.
+     */
     private void carregarResumo() {
         java.util.List<modelo.Produto> produtos = new dao.ProdutoDAO().listar();
 
@@ -356,34 +372,55 @@ public class FrmPrincipal extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+     * Navega para a tela de categoria.
+     *
+     * @param evt evento de clique do item de menu.
+     */
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         new FrmCategoria().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
-
+    /**
+     * Navega para a tela de produto.
+     *
+     * @param evt evento de clique do item de menu.
+     */
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         new FrmProduto().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
-
+    /**
+     * Navega para a tela de movimentação ao clicar no menu.
+     *
+     * @param evt evento de clique do menu.
+     */
     private void jMenuMovimentacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuMovimentacaoActionPerformed
         new FrmMovimentacao().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuMovimentacaoActionPerformed
-
+    /**
+     * Navega para a tela de movimentação ao clicar no item de menu.
+     *
+     * @param evt evento de clique do item de menu.
+     */
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         new FrmMovimentacao().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
-
+    /**
+     * Navega para a tela de reajuste de preço.
+     *
+     * @param evt evento de clique do item de menu.
+     */
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         new FrmReajustar().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuItem6ActionPerformed
-
     /**
-     * @param args the command line arguments
+     * Método principal para execução da tela principal.
+     *
+     * @param args argumentos da linha de comando (não utilizados).
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
