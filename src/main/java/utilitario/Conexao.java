@@ -1,4 +1,4 @@
-package utilitarios;
+package utilitario;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -1,7 +1,7 @@
 package modelo;
 
-import enums.Tamanho;
-import enums.Embalagem;
+import constante.Tamanho;
+import constante.Embalagem;
 
 public class Categoria extends Entidade {
 

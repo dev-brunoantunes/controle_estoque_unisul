@@ -1,4 +1,4 @@
-package enums;
+package constante;
 
 public enum Embalagem {
     SACO,

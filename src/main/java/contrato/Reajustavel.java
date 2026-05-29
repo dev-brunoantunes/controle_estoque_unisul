@@ -1,6 +1,6 @@
-package interfaces;
+package contrato;
 
-import enums.TipoReajuste;
+import constante.TipoReajuste;
 
 public interface Reajustavel {
     void reajustarPreco(double percentual, TipoReajuste tipo);

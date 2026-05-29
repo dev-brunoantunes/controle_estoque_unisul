@@ -8,7 +8,7 @@ import dao.CategoriaDAO;
 import dao.ProdutoDAO;
 import modelo.Categoria;
 import modelo.Produto;
-import enums.Unidade;
+import constante.Unidade;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -279,8 +279,14 @@ public class FrmProduto extends javax.swing.JFrame {
             produto.setNome(lblNome.getText().trim());
             produto.setPreco(Double.parseDouble(campPreco.getText().trim()));
             produto.setQuantidade(Integer.parseInt(campQuantidade.getText().trim()));
-            produto.setQuantidadeMinima(Integer.parseInt(campQtdMinima.getText().trim()));
-            produto.setQuantidadeMaxima(Integer.parseInt(campQtdMaxima.getText().trim()));
+            int qtdMinima = Integer.parseInt(campQtdMinima.getText().trim());
+            int qtdMaxima = Integer.parseInt(campQtdMaxima.getText().trim());
+            if (qtdMaxima <= qtdMinima) {
+                JOptionPane.showMessageDialog(this, "A quantidade máxima deve ser maior que a quantidade mínima!");
+                return;
+            }
+            produto.setQuantidadeMinima(qtdMinima);
+            produto.setQuantidadeMaxima(qtdMaxima);
             produto.setUnidade(Unidade.valueOf(cmbUnidade.getSelectedItem().toString()));
             produto.setCategoria((Categoria) cmbCategoria.getSelectedItem());
 
@@ -305,8 +311,14 @@ public class FrmProduto extends javax.swing.JFrame {
             produto.setNome(lblNome.getText().trim());
             produto.setPreco(Double.parseDouble(campPreco.getText().trim()));
             produto.setQuantidade(Integer.parseInt(campQuantidade.getText().trim()));
-            produto.setQuantidadeMinima(Integer.parseInt(campQtdMinima.getText().trim()));
-            produto.setQuantidadeMaxima(Integer.parseInt(campQtdMaxima.getText().trim()));
+            int qtdMinima = Integer.parseInt(campQtdMinima.getText().trim());
+            int qtdMaxima = Integer.parseInt(campQtdMaxima.getText().trim());
+            if (qtdMaxima <= qtdMinima) {
+                JOptionPane.showMessageDialog(this, "A quantidade máxima deve ser maior que a quantidade mínima!");
+                return;
+            }
+            produto.setQuantidadeMinima(qtdMinima);
+            produto.setQuantidadeMaxima(qtdMaxima);
             produto.setUnidade(Unidade.valueOf(cmbUnidade.getSelectedItem().toString()));
             produto.setCategoria((Categoria) cmbCategoria.getSelectedItem());
 

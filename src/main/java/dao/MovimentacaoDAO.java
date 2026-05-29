@@ -8,8 +8,8 @@ import java.util.List;
 
 import modelo.Movimentacao;
 import modelo.Produto;
-import enums.TipoMovimentacao;
-import utilitarios.Conexao;
+import constante.TipoMovimentacao;
+import utilitario.Conexao;
 
 public class MovimentacaoDAO {
 
@@ -44,7 +44,7 @@ public class MovimentacaoDAO {
         WHERE id = ?
     """;
 
-        try (java.sql.Connection conn = utilitarios.Conexao.conectar(); java.sql.PreparedStatement ps = conn.prepareStatement(sql)) {
+        try (java.sql.Connection conn = utilitario.Conexao.conectar(); java.sql.PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setInt(1, movimentacao.getProduto().getId());
             ps.setDate(2, java.sql.Date.valueOf(movimentacao.getData()));
@@ -64,7 +64,7 @@ public class MovimentacaoDAO {
 
         String sql = "DELETE FROM movimentacao WHERE id = ?";
 
-        try (java.sql.Connection conn = utilitarios.Conexao.conectar(); java.sql.PreparedStatement ps = conn.prepareStatement(sql)) {
+        try (java.sql.Connection conn = utilitario.Conexao.conectar(); java.sql.PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setInt(1, id);
             ps.executeUpdate();

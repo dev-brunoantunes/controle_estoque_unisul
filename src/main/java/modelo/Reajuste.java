@@ -5,7 +5,7 @@ public class Reajuste {
     private int id;
     private java.util.Date dataReajuste;
     private double valor;
-    private enums.TipoReajuste tipo;
+    private constante.TipoReajuste tipo;
     private Categoria categoria;
 
     public Reajuste() {
@@ -13,7 +13,7 @@ public class Reajuste {
 
     public Reajuste(int id, java.util.Date dataReajuste,
             double valor,
-            enums.TipoReajuste tipo,
+            constante.TipoReajuste tipo,
             Categoria categoria) {
 
         this.id = id;
@@ -47,11 +47,11 @@ public class Reajuste {
         this.valor = valor;
     }
 
-    public enums.TipoReajuste getTipo() {
+    public constante.TipoReajuste getTipo() {
         return tipo;
     }
 
-    public void setTipo(enums.TipoReajuste tipo) {
+    public void setTipo(constante.TipoReajuste tipo) {
         this.tipo = tipo;
     }
 

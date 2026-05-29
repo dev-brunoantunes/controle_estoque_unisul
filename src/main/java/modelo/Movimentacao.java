@@ -1,6 +1,6 @@
 package modelo;
 
-import enums.TipoMovimentacao;
+import constante.TipoMovimentacao;
 import java.time.LocalDate;
 
 public class Movimentacao extends Entidade {

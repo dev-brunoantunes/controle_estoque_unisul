@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.Types;
 import javax.swing.JOptionPane;
 import modelo.Reajuste;
-import utilitarios.Conexao;
+import utilitario.Conexao;
 
 public class ReajusteDAO {
 

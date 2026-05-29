@@ -366,7 +366,7 @@ public class FrmMovimentacao extends javax.swing.JFrame {
             mov.setProduto(prodAtual);
             mov.setData(java.time.LocalDate.now());
             mov.setQuantidade(quantidade);
-            mov.setTipo(enums.TipoMovimentacao.valueOf(tipo));
+            mov.setTipo(constante.TipoMovimentacao.valueOf(tipo));
             movimentacaoDAO.atualizar(mov);
 
             javax.swing.JOptionPane.showMessageDialog(this,
@@ -416,7 +416,7 @@ public class FrmMovimentacao extends javax.swing.JFrame {
             mov.setProduto(prodAtual);
             mov.setData(java.time.LocalDate.now());
             mov.setQuantidade(quantidade);
-            mov.setTipo(enums.TipoMovimentacao.valueOf(tipo));
+            mov.setTipo(constante.TipoMovimentacao.valueOf(tipo));
             movimentacaoDAO.inserir(mov);
 
             javax.swing.JOptionPane.showMessageDialog(this,

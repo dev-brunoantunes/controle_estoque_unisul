@@ -8,10 +8,10 @@ import java.util.List;
 
 import modelo.Categoria;
 import modelo.Produto;
-import enums.Unidade;
-import enums.Tamanho;
-import enums.Embalagem;
-import utilitarios.Conexao;
+import constante.Unidade;
+import constante.Tamanho;
+import constante.Embalagem;
+import utilitario.Conexao;
 
 public class ProdutoDAO {
 

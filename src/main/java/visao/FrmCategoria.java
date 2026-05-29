@@ -7,8 +7,8 @@ package visao;
 import dao.CategoriaDAO;
 import javax.swing.JOptionPane;
 import modelo.Categoria;
-import enums.Embalagem;
-import enums.Tamanho;
+import constante.Embalagem;
+import constante.Tamanho;
 
 /**
  *

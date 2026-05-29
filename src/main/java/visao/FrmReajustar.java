@@ -201,7 +201,7 @@ public class FrmReajustar extends javax.swing.JFrame {
         }
 
         // Lê tipo de reajuste
-        enums.TipoReajuste tipo = enums.TipoReajuste.valueOf(
+        constante.TipoReajuste tipo = constante.TipoReajuste.valueOf(
                 (String) jComboBox1.getSelectedItem()
         );
 
@@ -222,7 +222,7 @@ public class FrmReajustar extends javax.swing.JFrame {
             return;
         }
 
-        String tipoTexto = tipo == enums.TipoReajuste.AUMENTO ? "aumento" : "desconto";
+        String tipoTexto = tipo == constante.TipoReajuste.AUMENTO ? "aumento" : "desconto";
         int ok = javax.swing.JOptionPane.showConfirmDialog(this,
                 "Aplicar " + tipoTexto + " de " + percentual + "% em " + produtos.size() + " produto(s)?",
                 "Confirmar Reajuste", javax.swing.JOptionPane.YES_NO_OPTION);
@@ -306,7 +306,7 @@ public class FrmReajustar extends javax.swing.JFrame {
 
         try {
 
-            utilitarios.Conexao con = new utilitarios.Conexao();
+            utilitario.Conexao con = new utilitario.Conexao();
 
             java.sql.Connection conn = con.conectar();
 

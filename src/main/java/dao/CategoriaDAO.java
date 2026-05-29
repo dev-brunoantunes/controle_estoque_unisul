@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import modelo.Categoria;
-import enums.Embalagem;
-import enums.Tamanho;
-import utilitarios.Conexao;
+import constante.Embalagem;
+import constante.Tamanho;
+import utilitario.Conexao;
 
 public class CategoriaDAO {
 

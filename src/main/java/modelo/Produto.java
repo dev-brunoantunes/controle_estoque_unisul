@@ -1,7 +1,7 @@
 package modelo;
 
-import enums.Unidade;
-import interfaces.Reajustavel;
+import constante.Unidade;
+import contrato.Reajustavel;
 
 public class Produto extends Entidade implements Reajustavel {
 
@@ -92,8 +92,8 @@ public class Produto extends Entidade implements Reajustavel {
     }
 
     @Override
-    public void reajustarPreco(double percentual, enums.TipoReajuste tipo) {
-        if (tipo == enums.TipoReajuste.AUMENTO) {
+    public void reajustarPreco(double percentual, constante.TipoReajuste tipo) {
+        if (tipo == constante.TipoReajuste.AUMENTO) {
             preco = preco + (preco * percentual / 100);
         } else {
             preco = preco - (preco * percentual / 100);

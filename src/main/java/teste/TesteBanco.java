@@ -1,9 +1,9 @@
 package teste;
 
-import utilitarios.Conexao;
+import utilitario.Conexao;
 import java.sql.Connection;
 
-public class teste {
+public class TesteBanco {
 
     public static void main(String[] args) {
 
