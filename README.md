@@ -200,6 +200,7 @@ Relatório contendo:
 # Tecnologias Utilizadas
 
 - Java ( JDK 25.0 )
+- Apache NetBeans IDE 29
 - Programação Orientada a Objetos (POO)
 - Git
 - GitHub
